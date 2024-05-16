@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>contact</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Sixtyfour&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="box_con05">
+        <form method="post" action="mail.php">
+        <ul class="formTable">
+        <li>
+            <p class="title"><em>確認</em></p>
+            <div class="box_det">
+                 <div class="box_br">
+                     <label>
+                       <input type="radio" name="gender" value="テキスト1">
+                       テキスト1
+                    </label>
+                </div>
+                <div class="box_br">
+                    <label>
+                        <input type="radio" name="gender" value="テキスト2">
+                        テキスト2
+                    </label>
+                </div>
+                <span>必須</span>
+            </div>
+          </li>
+          <li>
+            <p class="title"><em>お名前</em></p>
+            <div class="box_det"><input size="20" type="text" class="wide" name="お名前" />
+              <span>必須</span>
+            </div>
+          </li>
+          <li>
+            <p class="title"><em>電話番号（半角）</em></p>
+            <div class="box_det"><input size="30" type="text" class="wide" name="電話番号" /><span>必須</span></div>
+          </li>
+          <li>
+            <p class="title"><em>Mail（半角）</em></p>
+            <div class="box_det"><input size="30" type="text" class="wide" name="Email" /><span>必須</span></div>
+          </li>
+          <li>
+            <p class="title"><em>お問い合わせ内容</em></p>
+            <div class="box_det"><textarea name="お問い合わせ内容" cols="50" rows="5"></textarea><span>必須</span></div>
+          </li>
+        </ul>
+       
+      </form>
+    </div>
+    <footer class="footer">
+        <div class="footer_logo"><img src="image/icon.png" alt="logo"></div>
+        <div class="footer_copyright">（C）MAGI.MURI. 2024</div>
+      </footer>
+  </body>
+</html>
