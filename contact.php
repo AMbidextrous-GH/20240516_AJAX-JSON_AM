@@ -1,19 +1,18 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $dsn = 'mysql:dbname=favorite-site_comment;host=127.0.0.1;charset=utf8';
-    $user = 'root';
-    $password = '';
+$dsn = 'mysql:dbname=favorite-site_comment;host=127.0.0.1;charset=utf8';
+$user = 'root';
+$password = '';
 
-    try {
-        $PDO = new PDO($dsn, $user, $password);
-        $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+try {
+    $PDO = new PDO($dsn, $user, $password);
+    $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $comment = $_POST['comment'];
         $send_at = date('Y-m-d H:i:s');
 
-        // SQL文の準備と実行（データの挿入）
         $sql = "INSERT INTO comments (name, email, comment, send_at) VALUES (:name, :email, :comment, :send_at)";
         $stmt = $PDO->prepare($sql);
         $stmt->bindParam(':name', $name);
@@ -22,10 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':send_at', $send_at);
         $stmt->execute();
 
-        echo "<script>alert('Message Sent'); window.location.href = 'contact.php';</script>";
-    } catch (PDOException $e) {
-        echo 'データベースエラー: ' . $e->getMessage();
+        // Redirect to index.php after form submission
+        header("Location: index.php");
+        exit();
     }
+} catch (PDOException $e) {
+    echo 'データベースエラー: ' . $e->getMessage();
 }
 ?>
 
@@ -39,11 +40,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <title>Contact</title>
 </head>
 <body>
-<button id="js-show-popup"><img src="./img/contact.png"></button>
-<div class="popup" id="js-popup">
-     <div class="popup-inner">
+<div class="s_section" id="js-trigger"> <!-- スクロールで始動するアニメーション付けたかった -->
+  <div class="contact_button" id="js-fixed-btn" >
+  <div class="contact_button1">
+    <button id="js-show-popup" ><img src="./img/contact_button.png" ></button>
+  </div>
+  <div class="contact_button2">
+    <img src="./img/contact_creeper.png" >
+  </div>
+ </div>
+  <div class="popup" id="js-popup">
+    <div class="popup-inner">
       <h1 class="popup-title">contact</h1>
-      <div class="close-btn" id="js-close-btn"><i class="fas fa-times">×</i></div>
+
       <div class="Form">
         <form action="contact.php" method="POST">
           <div class="Form-Item">
@@ -58,15 +67,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>message</p>
             <textarea class="Form-Item-Textarea" name="comment" required></textarea>
           </div>
-          <input type="submit" class="Form-Btn" value="send">
-          <input type="button" class="Form-Btn" onclick="location.href='index.php'" value="back">
+          
+          <div class="Btn">
+            <input type="submit" class="Form-Btn" value="send">
+            <input type="button" class="Form-Btn" onclick="location.href='index.php'" value="back">
+          </div>
         </form>
-        <div>
-          <img src="./img/com-1--unscreen.gif">
+        
+        <div class="headbang">
+          <img src="./img/contact_headbang.gif">
         </div>
-      </div>
+
+      </div>   
     </div>
-    <div class="black-background" id="js-black-bg"></div>
+      <div class="black-background" id="js-black-bg"></div>
   </div>
 
 <script type="text/javascript" src="./js/contact.js"></script>
