@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.infomation {
+  background-color: black;
+  max-width: 900px;
+  height: 30px;
+  display:flex;
+  margin:auto;
+  overflow: hidden;
+  }
+  .infoImg img {
+    width: 30px;
+}
+.infoText {
+  color: #ffffff;
+  padding-left: 100%;
+  white-space: nowrap;
+  display: inline-block;
+  animation: infoAnimation 20s linear infinite;
+  }
+.infoText p {
+  display:inline-block;
+  margin: 8px 0 0 0;
+  }
+  a:link { color: #ffffff; } 
+  a:visited { color: #979797; } 
+
+@keyframes infoAnimation {
+  0% {
+  transform: translateX(0);
+  }
+  100% {
+  transform: translateX(-100%);
+  }}
