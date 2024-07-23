@@ -1,20 +1,99 @@
-@charset "UTF-8";
-button {
-  border: none;
-  outline: none;
-  background: transparent;
-}
-button img {
-  display: block;
+.contact_button {
+  background-image: url(../img/contact_background.png);
+  background-repeat: no-repeat;
+  display: flex;
+  max-width: 900px;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.js-show-popup {
-  opacity: 0;  transform: translate(50%, 0);  transition: 2s;
+.contact_button1 img {
+  width: 200px;
 }
-.js-show-popup .is-show {
-  transform: translate(0, 0);
-  opacity: 1;
+
+/* 上からスライドインアニメーション */
+.contact_button1 {
+  margin: 50px 0 0 100px;
+	-webkit-animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+	        animation: slide-in-blurred-top 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
+@-webkit-keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+.contact_button2 img {
+  margin: 200px 0 0 350px;
+  width: 120px
+}
+
+/* 下からスライドインアニメーション */
+.contact_button2 {
+	-webkit-animation: slide-in-bottom 1.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-bottom 1.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+            transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
 
 /* モーダルウィンドウ */
 .popup {
@@ -28,13 +107,12 @@ button img {
   visibility: hidden;
   transition: .6s;
   display: flex;
-    align-items: center;
+  align-items: center;
 }
 .popup.is-show {
   opacity: 1;
   visibility: visible;
 }
-
 .popup-inner {
   position: relative;
   margin: 0 auto;
@@ -50,28 +128,12 @@ button img {
   }
 }
 
-
-.popup-title {
-  font-size: 24px; /* 必要に応じてフォントサイズを調整 */
-  font-weight: bold;
+.popup-inner h1 {
   text-align: center;
-  margin: 20px 0; /* 必要に応じてマージンを調整 */
+  font-size: 150%;
+  margin: 20px 0 20px 0;
 }
 
-.close-btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30px;
-  height: 30px;
-  line-height: 50px;
-  text-align: center;
-  cursor: pointer;
-}
-.close-btn i {
-  font-size: 20px;
-  color: #000000;
-}
 .black-background {
   position: absolute;
   left: 0;
@@ -89,10 +151,10 @@ button img {
   margin-right: auto;
   padding: 0 4%;
   max-width: 720px;
-  height: 100%;
+  height: 90%;
   }
   
-  .Form-Item {
+.Form-Item {
   border-top: 1px solid #ddd;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -100,41 +162,42 @@ button img {
   display: flex;
   align-items: center;
   }
-  @media screen and (max-width: 480px) {
-    .Form-Item {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    flex-wrap: wrap;
-    }
-  }
-  .Form-Item:nth-child(5) {
+@media screen and (max-width: 480px) {
+.Form-Item {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  flex-wrap: wrap;
+  }}
+
+.Form-Item:nth-child(5) {
   border-bottom: 1px solid #ddd;
   }
-  .Form-Item-Label {
+
+.Form-Item-Label {
   width: 100%;
   max-width: 248px;
   letter-spacing: 0.05em;
   font-weight: bold;
   font-size: 18px;
   }
-  @media screen and (max-width: 480px) {
-  .Form-Item-Label {
+@media screen and (max-width: 480px) {
+.Form-Item-Label {
   max-width: inherit;
   display: flex;
   align-items: center;
   font-size: 15px;
-  }
-  }
-  .Form-Item-Label.isMsg {
+  }}
+
+.Form-Item-Label.isMsg {
   margin-top: 8px;
   margin-bottom: auto;
   }
-  @media screen and (max-width: 480px) {
-  .Form-Item-Label.isMsg {
+@media screen and (max-width: 480px) {
+.Form-Item-Label.isMsg {
   margin-top: 0;
-  }
-  }
-  .Form-Item-Label-Required {
+  }}
+
+.Form-Item-Label-Required {
   border-radius: 6px;
   margin-right: 8px;
   padding-top: 8px;
@@ -146,16 +209,16 @@ button img {
   color: #fff;
   font-size: 14px;
   }
-  @media screen and (max-width: 480px) {
-  .Form-Item-Label-Required {
+@media screen and (max-width: 480px) {
+.Form-Item-Label-Required {
   border-radius: 4px;
   padding-top: 4px;
   padding-bottom: 4px;
   width: 32px;
   font-size: 10px;
-  }
-  }
-  .Form-Item-Input {
+  }}
+
+.Form-Item-Input {
   border: 1px solid #ddd;
   border-radius: 6px;
   margin-left: 40px;
@@ -168,16 +231,16 @@ button img {
   background: #eaedf2;
   font-size: 18px;
   }
-  @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .Form-Item-Input {
   margin-left: 0;
   margin-top: 18px;
   height: 40px;
   flex: inherit;
   font-size: 15px;
-  }
-  }
-  .Form-Item-Textarea {
+  }}
+
+.Form-Item-Textarea {
   border: 1px solid #ddd;
   border-radius: 6px;
   margin-left: 40px;
@@ -190,24 +253,27 @@ button img {
   background: #eaedf2;
   font-size: 18px;
   }
-  @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .Form-Item-Textarea {
   margin-top: 18px;
   margin-left: 0;
   height: 200px;
   flex: inherit;
   font-size: 15px;
-  }
-  }
-  .Form-Btn {
+  }}
+
+.Btn{
+  text-align:center;
+}  
+.Form-Btn {
   border-radius: 6px;
   margin-top: 32px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 15px;
+  margin-right: 15px;
   padding-top: 20px;
   padding-bottom: 20px;
-  width: 280px;
-  display: block;
+  width: 200px;
+  display: inline-block;;
   letter-spacing: 0.05em;
   background: #5bc8ac;
   color: #fff;
@@ -216,7 +282,7 @@ button img {
   cursor: pointer;
   transition: 0.3s;
   }
-  .Form-Btn:hover{
+.Form-Btn:hover{
     opacity: 0.6;
   }
   @media screen and (max-width: 480px) {
@@ -226,5 +292,9 @@ button img {
   padding-bottom: 8px;
   width: 160px;
   font-size: 16px;
-  }
-  }
+  }}
+  
+.headbang{
+  margin-top: 60px;
+  text-align: center;
+}
